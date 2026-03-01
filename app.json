@@ -1,29 +1,25 @@
 {
   "expo": {
-    "name": "animalguard-mobile",
+    "name": "AnimalGuard",
     "slug": "animalguard-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "animalguardmobile",
+    "icon": "./assets/images/logoAG.png",
+    "scheme": "animalguard",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
     },
     "android": {
+      "package": "com.anonymous.animalguardmobile",
+      "usesCleartextTraffic": true,
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/images/android-icon-foreground.png",
-        "backgroundImage": "./assets/images/android-icon-background.png",
-        "monochromeImage": "./assets/images/android-icon-monochrome.png"
-      },
-      "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false,
-      "package": "com.anonymous.animalguardmobile"
+        "foregroundImage": "./assets/images/logoAG.png",
+        "backgroundColor": "#E6F4FE"
+      }
     },
     "web": {
-      "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
@@ -42,8 +38,13 @@
       ]
     ],
     "experiments": {
-      "typedRoutes": true,
-      "reactCompiler": true
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "d4f9cf3c-1aae-44fb-be30-1fb93f51803f"
+      }
     }
   }
 }

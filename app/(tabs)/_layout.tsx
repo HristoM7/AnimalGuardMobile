@@ -9,27 +9,30 @@ import { useColorScheme } from '@/hooks/use-color-scheme';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const theme = Colors[colorScheme ?? 'light'];
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        tabBarInactiveTintColor: Colors[colorScheme ?? 'light'].tabIconDefault,
+        tabBarActiveTintColor: theme.tint,
+        tabBarInactiveTintColor: theme.tabIconDefault,
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarStyle: {
-          backgroundColor: Colors[colorScheme ?? 'light'].surface,
-          borderTopColor: Colors[colorScheme ?? 'light'].border,
+          backgroundColor: theme.surface,
+          borderTopColor: theme.border,
           borderTopWidth: 1,
           paddingTop: 6,
-          height: Platform.select({ ios: 84, default: 68 }),
+          paddingBottom: Platform.select({ ios: 0, android: 14, default: 10 }),
+          height: Platform.select({ ios: 84, android: 78, default: 72 }),
         },
         tabBarLabelStyle: {
           fontSize: 12,
           fontWeight: '700',
-          marginBottom: Platform.select({ ios: 0, default: 6 }),
+          marginBottom: Platform.select({ ios: 0, android: 2, default: 4 }),
         },
-      }}>
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
@@ -38,35 +41,21 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Инфо',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
         name="settings"
         options={{
-          title: "Settings",
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="gearshape.fill" color={color} />
-          ),
+          title: 'Настройки',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="gearshape.fill" color={color} />,
         }}
       />
       <Tabs.Screen
         name="live"
         options={{
-          title: "Live",
+          title: 'На живо',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="video.fill" color={color} />,
         }}
       />
-      <Tabs.Screen
-        name="device"
-        options={{
-          title: 'Устройство',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="switch.2" color={color} />,
-        }}
-      />
+      <Tabs.Screen name="device" options={{ href: null }} />
+      <Tabs.Screen name="explore" options={{ href: null }} />
     </Tabs>
   );
 }

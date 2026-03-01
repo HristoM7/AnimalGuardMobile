@@ -1,0 +1,27 @@
+{
+  "cli": {
+    "version": ">= 18.0.6",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_SUPABASE_URL": "https://hubhiisrngiwdaikkgzu.supabase.co",
+        "EXPO_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh1YmhpaXNybmdpd2RhaWtrZ3p1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzExNzM5NDMsImV4cCI6MjA4Njc0OTk0M30.QT4muV8K7nmhrRzcJeYnX0C0slbPEi1LbSUDu622DiE",
+        "EXPO_PUBLIC_SUPABASE_BUCKET": "photos",
+        "EXPO_PUBLIC_DEVICE_ID": "icopi-001",
+        "EXPO_PUBLIC_STREAM_URL": "http://10.46.160.2:8000/stream.mjpg"
+      }
+    },
+    "production": {
+      "autoIncrement": true
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

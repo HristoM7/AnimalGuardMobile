@@ -231,21 +231,8 @@ export default function DeviceScreen() {
               borderColor: cardBorder,
               opacity: pressed ? 0.8 : 1,
             }]}>
-            <Text style={styles.secondaryBtnIcon}>🔄</Text>
+            
             <Text style={[styles.secondaryBtnText, { color: palette.text }]}>Опресни статус</Text>
-          </Pressable>
-
-          <Pressable
-            disabled={pinging}
-            onPress={sendPing}
-            style={({ pressed }) => [styles.primaryBtn, {
-              backgroundColor: palette.tint,
-              opacity: pressed || pinging ? 0.8 : 1,
-            }]}>
-            <Text style={styles.primaryBtnIcon}>📶</Text>
-            <Text style={styles.primaryBtnText}>
-              {pinging ? "Изпраща…" : "Пинг към устройство"}
-            </Text>
           </Pressable>
         </View>
 
