@@ -1,50 +1,53 @@
-# Welcome to your Expo app 👋
+# 🐾 AnimalGuard – Интелигентна система за защита от животни
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+AnimalGuard е интелигентна система за автоматично разпознаване на животни и хора в обособени зони, разработена с цел предотвратяване на нежелано навлизане и защита на земеделски или частни територии.
 
-## Get started
+Системата използва компютърно зрение (YOLO модел), облачно съхранение (Supabase), мобилно приложение и хардуерен алармен модул с ESP32.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## 📌 Основни функционалности
 
-2. Start the app
+- 📷 Заснемане чрез Raspberry Pi Camera
+- 🧠 Разпознаване на обекти чрез YOLOv8
+- 🐶 Детекция на животни (dog, cat, cow, horse, sheep, bird и др.)
+- 🚶 Детекция на човек (активира се само при включен Guard режим)
+- 🔊 Звукова аларма (локален зумер + ESP32 зумер)
+- ☁️ Качване на изображения в Supabase
+- 📩 Email известие при засечен човек
+- 📱 Мобилно приложение (Android APK)
+- 📡 Livestream режим
+- 🔌 UART комуникация между Raspberry Pi и ESP32
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+## 🏗 Архитектура на системата
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### Хардуерни компоненти:
+- Raspberry Pi 5
+- Raspberry Pi Camera
+- ESP32 микроконтролер
+- Зумер (Buzzer)
+- Захранващ модул (K2167)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Софтуерни компоненти:
+- Python (Raspberry Pi)
+- YOLOv8 (Ultralytics)
+- Supabase (облачна база и storage)
+- Resend API (email известия)
+- MicroPython (ESP32)
+- React Native + Expo (мобилно приложение)
 
-## Get a fresh project
+---
 
-When you're ready, run:
+## 🔄 Работен процес
 
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+1. Raspberry Pi заснема изображение.
+2. YOLO моделът анализира кадъра.
+3. Ако бъде засечено:
+   - Животно → активира се аларма.
+   - Човек → аларма + email (ако Guard режимът е включен).
+4. Изображението се качва в Supabase.
+5. Изпраща се код чрез UART към ESP32.
+6. ESP32 активира зумер според типа обект.
+7. Мобилното приложение визуализира събитията.
